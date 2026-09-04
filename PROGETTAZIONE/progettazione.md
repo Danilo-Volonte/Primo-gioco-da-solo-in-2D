@@ -1,8 +1,7 @@
 # SPIEGAZIONE DEL GIOCO
-Il gioco é uno sparatutto battleroyale su macchine. <br>
-La mappa sarà abbstanza grande e avrà una tempesta dove se si viene risucchiati la macchina inizia a sbandare a destra o a sinistra. <br>
-Si può strae dentro la tempesta però non più di tanto tempo perché la tempesta fa tanti picoli danni che impediranno a qualsiasi giocatore di starci per più di trenta secondi. <br>
-La tempoesta inziareà a rimpicciolirsi fin dall'inizio della partita.<br>
+Il gioco ha due modalità: Battle Royale e Racing.
+La prima è una Battle royal come tutte le atre.
+Mentre il secondo è una modalità di gioco dove si gareggia in una gara in un ciruito, dove ci si potrà sparare o colpirsi a vicenda.
 Il gioco avrà vari tipi di macchine:
 - RALLY
     - Velocità: media-alta
@@ -70,3 +69,17 @@ Nel gioco ogni macchina avrà delle specifiche armi, che sono di tipo:
     - Velocità di ricarica: lenta
     - Cadenza di fuoco: velocissima
     - Gittata: qualsiasi distanza
+
+# SPIEGAZIONE GAMEPLAY
+Per tutte e due le modalità i pulsanti saranno gli stessi: wasd o le freccette per guidare con la tastiera. 
+Però il gioco è più bello da giocare con il controller, per qua i tasti dovranno essere testati successivamente.
+Come detto prima la modalità Battle Royale è come quella di altri giochi, quindi ci sarà una mappa abbastanza grande dove tanti giocatri si sfideranno tra loro per poter sopravvivere e vincere.
+Vince chi sopravvive a tutti i giocatori.
+Oltre a ciò c'è la classica tempesta che si rimpicciolisce, rimpicciolendo la safezone dove si può combattere senza problemi.
+Chi entra nella tempesta avrà una spinta circolare o destra o a sinistra.
+Le macchine più pesanti saranno soggete meno a questa cosa mentre le più leggere saranno colpute molto più duramente.
+In più più si sta dentro più danni si prendono per fare in modo che la tempesta non venga utilizzata per ottenere vantaggio senza richiare niente.
+
+La modalità Racing invece è semplicemente una gara simile al rallycross dove vince chi acquista più punti.
+I punti si possono aquistare o vincendo la gara o facendo esploedere i propri avversari.
+Ovviamente vincere fa guadaganre molti più punti che sconfiggendo avversari ma questo non impedisce a un giocatore di poter vicere senza essere arrivato prima a tante gare.
