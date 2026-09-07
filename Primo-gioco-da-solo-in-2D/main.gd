@@ -9,18 +9,23 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#rotation += velocitaAngolare * delta
+	if(Input.is_action_pressed("left")):
+		$Player.position.x -= 1
+		print($Player.position)
+	if(Input.is_action_pressed("right")):
+		$Player.position.x += 1
+		print($Player.position)
+	if(Input.is_action_pressed("up")):
+		$Player.position.y -= 1
+		print($Player.position)
+	if(Input.is_action_pressed("down")):
+		$Player.position.y += 1
+		print($Player.position)
+	#rotation += velocitaAngolare * direzione *  delta 
 	
-	var direzione = 0
-	if(Input.is_action_pressed("ui_left")):
-		direzione = -1
-	if(Input.is_action_pressed("ui_right")):
-		direzione = 1
-	rotation += velocitaAngolare * direzione *  delta 
+	#var velocita = Vector2.ZERO
+	#if(Input.is_action_pressed("ui_up")):
+		#velocita = Vector2.UP.rotated(rotation) * speed
+	#position += velocita * delta
 	
-	var velocita = Vector2.ZERO
-	if(Input.is_action_pressed("ui_up")):
-		velocita = Vector2.UP.rotated(rotation) * speed
-	position += velocita * delta
-	
-	rotation += velocitaAngolare * direzione *  delta 
+	#rotation += velocitaAngolare * direzione *  delta 

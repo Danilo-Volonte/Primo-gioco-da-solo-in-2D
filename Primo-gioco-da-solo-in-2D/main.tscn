@@ -33,7 +33,7 @@ shape = SubResource("RectangleShape2D_7dm0k")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="CollisionShape2D4" unique_id=736300039]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1739999745]
+[node name="Player" type="Sprite2D" parent="." unique_id=1739999745]
 texture = ExtResource("1_ig7tw")
 
-[node name="Camera2D" type="Camera2D" parent="Sprite2D" unique_id=1913373772]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1913373772]
