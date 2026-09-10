@@ -79,7 +79,7 @@ color = Color(0.43529412, 0.19215687, 0.39607844, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="." unique_id=1508365050]
-position = Vector2(-1055, -812)
+position = Vector2(-19, -1687)
 shape = SubResource("RectangleShape2D_7dm0k")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="CollisionShape2D7" unique_id=1246131265]
