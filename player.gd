@@ -22,6 +22,11 @@ func _physics_process(delta: float) -> void:
 	if(!Input.is_action_pressed("down") and !Input.is_action_pressed("up")):
 		velocity = velocity.move_toward(Vector2.ZERO, engineBraking * delta)
 		
+	
+	if(!Input.is_action_pressed("left")):
+		rotation += rotation_speed * velocity.length() / max_speed * delta
+	if(!Input.is_action_pressed("right")):
+		rotation -= rotation_speed * velocity.length() / max_speed * delta
 		
 	velocity = velocity.limit_length(max_speed)
 
