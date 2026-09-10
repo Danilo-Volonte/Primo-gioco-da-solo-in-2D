@@ -112,3 +112,12 @@ script = ExtResource("2_0xm2m")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=414677190]
 texture = ExtResource("1_ig7tw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1333531997]
+
+[node name="Contachilometri" type="Label" parent="CanvasLayer" unique_id=1845269843]
+offset_left = 279.0
+offset_top = 224.0
+offset_right = 561.0
+offset_bottom = 313.0
+text = "0 Km/h"
