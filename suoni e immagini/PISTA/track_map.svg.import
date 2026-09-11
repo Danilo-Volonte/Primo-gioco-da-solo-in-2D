@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be2ymdmyjiy88"
-path="res://.godot/imported/playerGrey_up2.png-e6888f0ce19ebb9baaaf38c06ed0660b.ctex"
+uid="uid://dcpspqgqq5rnh"
+path="res://.godot/imported/track_map.svg-f9a8e863e5675595f0889027445ccfeb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://suoni e immagini/dodge_the_creeps_2d_assets/art/playerGrey_up2.png"
-dest_files=["res://.godot/imported/playerGrey_up2.png-e6888f0ce19ebb9baaaf38c06ed0660b.ctex"]
+source_file="res://suoni e immagini/PISTA/track_map.svg"
+dest_files=["res://.godot/imported/track_map.svg-f9a8e863e5675595f0889027445ccfeb.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

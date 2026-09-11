@@ -1,42 +1,29 @@
 extends CharacterBody2D
 
-@export var speed = 400
-@export var rotation_speed = 1.5
-@export var acceleration := 200.0
-@export var brake := 300.0
-@export var max_speed := 1000.0
-@export var engineBraking := 100.0
+@export var max_speed: float = 400.0
+@export var acceleration: float = 160.0
+@export var engine_braking: float = 200.0
+@export var rotation_speed: float = 3.0
 
-@onready var contachilometri = $"../CanvasLayer/Contachilometri"
+var speed: float = 0.0
 
-var rotationDirection = 0
+func _physics_process(delta):
+	# Accelerazione / frenata
+	if Input.is_action_pressed("accelerate"):
+		speed += acceleration * delta
+	elif Input.is_action_pressed("brake"):
+		speed -= acceleration * delta
+	else:
+		speed = move_toward(speed, 0.0, engine_braking * delta)
 
-func _physics_process(delta: float) -> void:
+	speed = clamp(speed, -max_speed * 0.5, max_speed)  # retromarcia più lenta
 
-	if Input.is_action_pressed("up"):
-		velocity -= transform.y * acceleration * delta
+	# Sterzata: legge left/right indipendentemente dal gas
+	var steer_input = Input.get_axis("left", "right")
+	var steer_factor = clamp(abs(speed) / max_speed, 0.3, 1.0)
+	rotation += steer_input * rotation_speed * steer_factor * delta
 
-	if Input.is_action_pressed("down"):
-		velocity += transform.y * brake * delta
+	velocity = -transform.y * speed
+	position += velocity * delta
 	
-	if(!Input.is_action_pressed("down") and !Input.is_action_pressed("up")):
-		velocity = velocity.move_toward(Vector2.ZERO, engineBraking * delta)
-		
 	
-	if(!Input.is_action_pressed("left")):
-		rotation += rotation_speed * velocity.length() / max_speed * delta
-	if(!Input.is_action_pressed("right")):
-		rotation -= rotation_speed * velocity.length() / max_speed * delta
-		
-	velocity = velocity.limit_length(max_speed)
-
-	get_input()
-
-	rotation += rotationDirection * rotation_speed * delta
-
-	move_and_slide()
-	
-	contachilometri.text = str(int(velocity.length()/100)) + " Km/h"
-
-func get_input():
-	Input.get_axis("left", "right")
