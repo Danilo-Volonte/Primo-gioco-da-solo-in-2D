@@ -1,15 +1,17 @@
 using Godot;
 using System;
 
+
 public partial class Car : CharacterBody2D
 {
-	public float maxSpeed;
-	public float acceleration;
-	public float engineBraking;
-	public float rotationSpeed;
-	public float contachilometri = GetNode<Label>("../CanvasLayer/Contachilometri");
+	public double maxSpeed;
+	public double acceleration;
+	public double engineBraking;
+	public double rotationSpeed;
+	public float speed = 0;
+	public const double contachilometri = GetNode<Label>("../CanvasLayer/Contachilometri");
 	
-	public float _maxSpeed
+	public double _maxSpeed
 	{
 		set
 		{
@@ -17,7 +19,7 @@ public partial class Car : CharacterBody2D
 			else { throw new ArgumentException("velocità troppo bassa");}
 		}
 	}
-	public float _acceleration
+	public double _acceleration
 	{
 		set
 		{
@@ -26,7 +28,7 @@ public partial class Car : CharacterBody2D
 		}
 	}
 
-	public float _engineBraking
+	public double _engineBraking
 	{
 		set
 		{
@@ -35,7 +37,7 @@ public partial class Car : CharacterBody2D
 		}
 	}
 
-	public float _rotationSpeed
+	public double _rotationSpeed
 	{
 		set
 		{
@@ -44,36 +46,28 @@ public partial class Car : CharacterBody2D
 		}
 	}
 
-	
+	public Car(double max_speed, double acc, double engine_braking, double rotation_speed)
+	{
+		_maxSpeed = max_speed;
+		_acceleration = acc;
+		_engineBraking = engine_braking;
+		_rotationSpeed = rotation_speed;
+	}
+
 	public override void _PhysicsProcess(double delta)
 	{
-		Vector2 velocity = Velocity;
+		// comand
+		if (Input.IsActionJustPressed("accelerate")){ speed += acceleration * delta;}
+		else if(Input.IsActionJustPressed("brake")) { speed -= acceleration * delta; }
+		else{ speed = Mathf.MoveToward(speed, 0.0, engineBraking * delta);}
 
-		// Add the gravity.
-		if (!IsOnFloor())
-		{
-			velocity += GetGravity() * (float)delta;
-		}
-
-		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-		{
-			velocity.Y = JumpVelocity;
-		}
-
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		if (direction != Vector2.Zero)
-		{
-			velocity.X = direction.X * Speed;
-		}
-		else
-		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-		}
-
-		Velocity = velocity;
-		MoveAndSlide();
+		speed = Mathf.Clamp(speed, -maxSpeed * 0.5f, maxSpeed);
+		
+		double steerInput = Input.GetAxis("left", "right"); 
+		double speedFactor = Mathf.Clamp(1.0 - Mathf.Abs(speed) / maxSpeed * 0.5, 0.5, 1.0);
+		Rotation += (float) (steerInput * rotationSpeed * speedFactor * delta);
+		Velocity = -Transform.Y * speed;
+		Position += Velocity * delta;
+		contachilometri.text = (string) ((Velocity/100) + "Km/h");
 	}
 }
