@@ -1,11 +1,50 @@
 using Godot;
 using System;
 
-public partial class car : CharacterBody2D
+public partial class Car : CharacterBody2D
 {
-	public const float Speed = 300.0f;
-	public const float JumpVelocity = -400.0f;
+	public float maxSpeed;
+	public float acceleration;
+	public float engineBraking;
+	public float rotationSpeed;
+	public float contachilometri = GetNode<Label>("../CanvasLayer/Contachilometri");
+	
+	public float _maxSpeed
+	{
+		set
+		{
+			if(value < acceleration && value < engineBraking) { maxSpeed = value;}
+			else { throw new ArgumentException("velocità troppo bassa");}
+		}
+	}
+	public float _acceleration
+	{
+		set
+		{
+			if(value > 0){	acceleration = value; }
+			else { throw new ArgumentException("accelerazione troppo bassa");}
+		}
+	}
 
+	public float _engineBraking
+	{
+		set
+		{
+			if(value >= 0 && value <= acceleration){ engineBraking = value;}
+			else { throw new ArgumentException("freno motore troppo alto o troppo basso");}
+		}
+	}
+
+	public float _rotationSpeed
+	{
+		set
+		{
+			if(value > 0) {rotationSpeed = value;}
+			else { throw new ArgumentException("rotazione troppo bassa");}
+		}
+	}
+
+	
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
