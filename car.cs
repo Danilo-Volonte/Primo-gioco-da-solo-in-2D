@@ -4,14 +4,14 @@ using System;
 
 public partial class Car : CharacterBody2D
 {
-	public double maxSpeed;
-	public double acceleration;
-	public double engineBraking;
-	public double rotationSpeed;
+	public float maxSpeed;
+	public float acceleration;
+	public float engineBraking;
+	public float rotationSpeed;
 	public float speed = 0;
-	public const double contachilometri = GetNode<Label>("../CanvasLayer/Contachilometri");
+	public Label contachilometri;
 	
-	public double _maxSpeed
+	public float _maxSpeed
 	{
 		set
 		{
@@ -19,7 +19,7 @@ public partial class Car : CharacterBody2D
 			else { throw new ArgumentException("velocità troppo bassa");}
 		}
 	}
-	public double _acceleration
+	public float _acceleration
 	{
 		set
 		{
@@ -28,7 +28,7 @@ public partial class Car : CharacterBody2D
 		}
 	}
 
-	public double _engineBraking
+	public float _engineBraking
 	{
 		set
 		{
@@ -37,7 +37,7 @@ public partial class Car : CharacterBody2D
 		}
 	}
 
-	public double _rotationSpeed
+	public float _rotationSpeed
 	{
 		set
 		{
@@ -45,8 +45,10 @@ public partial class Car : CharacterBody2D
 			else { throw new ArgumentException("rotazione troppo bassa");}
 		}
 	}
-
-	public Car(double max_speed, double acc, double engine_braking, double rotation_speed)
+	
+	public Car() { }   // costruttore vuoto richiesto da Godot
+	
+	public Car(float max_speed, float acc, float engine_braking, float rotation_speed)
 	{
 		_maxSpeed = max_speed;
 		_acceleration = acc;
@@ -57,17 +59,22 @@ public partial class Car : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 		// comand
-		if (Input.IsActionJustPressed("accelerate")){ speed += acceleration * delta;}
-		else if(Input.IsActionJustPressed("brake")) { speed -= acceleration * delta; }
-		else{ speed = Mathf.MoveToward(speed, 0.0, engineBraking * delta);}
+		if (Input.IsActionJustPressed("accelerate")){ speed += (float) (acceleration * delta);}
+		else if(Input.IsActionJustPressed("brake")) { speed -= (float) (acceleration * delta); }
+		else{ speed = (float) (Mathf.MoveToward(speed, 0.0, engineBraking * delta));}
 
 		speed = Mathf.Clamp(speed, -maxSpeed * 0.5f, maxSpeed);
 		
-		double steerInput = Input.GetAxis("left", "right"); 
-		double speedFactor = Mathf.Clamp(1.0 - Mathf.Abs(speed) / maxSpeed * 0.5, 0.5, 1.0);
+		float steerInput = Input.GetAxis("left", "right"); 
+		float speedFactor = (float) (Mathf.Clamp(1.0 - Mathf.Abs(speed) / maxSpeed * 0.5, 0.5, 1.0));
 		Rotation += (float) (steerInput * rotationSpeed * speedFactor * delta);
 		Velocity = -Transform.Y * speed;
-		Position += Velocity * delta;
-		contachilometri.text = (string) ((Velocity/100) + "Km/h");
+		Position += Velocity * (float) delta;
+		contachilometri.Text = (string) ((Velocity/100) + "Km/h");
 	}
+
+	public override void _Ready()
+	{
+		contachilometri = GetNode<Label>("../CanvasLayer/Contachilometri");
+	} 
 }
