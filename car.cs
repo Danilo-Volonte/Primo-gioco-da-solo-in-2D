@@ -1,7 +1,8 @@
 using Godot;
 using System;
 
-
+//per trovare tutte le classi
+[GlobalClass] 
 public partial class Car : CharacterBody2D
 {
 	public float maxSpeed;
@@ -15,7 +16,7 @@ public partial class Car : CharacterBody2D
 	{
 		set
 		{
-			if(value < acceleration && value < engineBraking) { maxSpeed = value;}
+			if(value > acceleration && value > engineBraking) { maxSpeed = value;}
 			else { throw new ArgumentException("velocità troppo bassa");}
 		}
 	}
@@ -23,7 +24,7 @@ public partial class Car : CharacterBody2D
 	{
 		set
 		{
-			if(value > 0){	acceleration = value; }
+			if(value > 0 && value > engineBraking){	acceleration = value; }
 			else { throw new ArgumentException("accelerazione troppo bassa");}
 		}
 	}
@@ -48,7 +49,7 @@ public partial class Car : CharacterBody2D
 	
 	public Car() { }   // costruttore vuoto richiesto da Godot
 	
-	public Car(float max_speed, float acc, float engine_braking, float rotation_speed)
+	public void Initialize(float max_speed, float acc, float engine_braking, float rotation_speed)
 	{
 		_maxSpeed = max_speed;
 		_acceleration = acc;
@@ -70,11 +71,9 @@ public partial class Car : CharacterBody2D
 		Rotation += (float) (steerInput * rotationSpeed * speedFactor * delta);
 		Velocity = -Transform.Y * speed;
 		Position += Velocity * (float) delta;
-		contachilometri.Text = (string) ((Velocity/100) + "Km/h");
+		contachilometri.Text = contachilometri.Text = $"{Velocity.Length() / 100} Km/h";
 	}
 
-	public override void _Ready()
-	{
-		contachilometri = GetNode<Label>("../CanvasLayer/Contachilometri");
-	} 
+	public void creaContachilometri() { contachilometri = GetNode<Label>("../CanvasLayer/Contachilometri"); } 
+	public string stampa() { return "velocità massima: {maxSpedd} /n accelerazione: {acceleration} /n freno motore: {engineBraking} /n velocità rotazione: {rotationSpeed} /n"; }
 }

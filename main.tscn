@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c2tl8wk6sp6y6" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://twx4pmoaoucy" path="res://icon.svg" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://c3o3xf4shnntp" path="res://car.cs" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://bcfj3755hbfhr" path="res://creaMacchina.gd" id="2_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://dcpspqgqq5rnh" path="res://suoni e immagini/PISTA/track_map.svg" id="4_1bvp3"]
 
 [node name="Main" type="Node2D" unique_id=2040235537]
