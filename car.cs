@@ -12,7 +12,7 @@ public partial class Car : CharacterBody2D
 	public float speed = 0;
 	public Label contachilometri;
 	
-	public float _maxSpeed
+	[export] public float _maxSpeed
 	{
 		set
 		{
@@ -20,7 +20,7 @@ public partial class Car : CharacterBody2D
 			else { throw new ArgumentException("velocità troppo bassa");}
 		}
 	}
-	public float _acceleration
+	[export] public float _acceleration
 	{
 		set
 		{
@@ -29,7 +29,7 @@ public partial class Car : CharacterBody2D
 		}
 	}
 
-	public float _engineBraking
+	[export] public float _engineBraking
 	{
 		set
 		{
@@ -38,7 +38,7 @@ public partial class Car : CharacterBody2D
 		}
 	}
 
-	public float _rotationSpeed
+	[export] public float _rotationSpeed
 	{
 		set
 		{
@@ -60,8 +60,8 @@ public partial class Car : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 		// comand
-		if (Input.IsActionJustPressed("accelerate")){ speed += (float) (acceleration * delta);}
-		else if(Input.IsActionJustPressed("brake")) { speed -= (float) (acceleration * delta); }
+		if (Input.IsActionPressed("accelerate")){ speed += (float) (acceleration * delta);}
+		else if(Input.IsActionPressed("brake")) { speed -= (float) (acceleration * delta); }
 		else{ speed = (float) (Mathf.MoveToward(speed, 0.0, engineBraking * delta));}
 
 		speed = Mathf.Clamp(speed, -maxSpeed * 0.5f, maxSpeed);
