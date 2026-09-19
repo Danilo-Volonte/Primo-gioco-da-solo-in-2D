@@ -7,10 +7,9 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#var player = $Player
-	#print(player.macchina.stampa())   # usa il nome esatto che hai dato alla variabile in creaMacchina.gd
-	 #player.macchina.contachilometri = GetNode<Label>("../CanvasLayer/Contachilometri");
-	pass
+	var player = $Player
+	print(player.macchina.stampa())   # usa il nome esatto che hai dato alla variabile in creaMacchina.gd
+	player.macchina.contachilometri = get_node("CanvasLayer/Contachilometri");
 
 func _process(_delta: float) -> void:
 	pass
