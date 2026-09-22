@@ -12,42 +12,53 @@ public partial class Car : CharacterBody2D
 	public float speed = 0;
 	public Label contachilometri;
 	
-	[export] public float _maxSpeed
+	[Export] public float _maxSpeed
 	{
 		set
 		{
 			if(value > acceleration && value > engineBraking) { maxSpeed = value;}
 			else { throw new ArgumentException("velocità troppo bassa");}
 		}
+		get { return maxSpeed;}
 	}
-	[export] public float _acceleration
+	[Export] public float _acceleration
 	{
 		set
 		{
 			if(value > 0 && value > engineBraking){	acceleration = value; }
 			else { throw new ArgumentException("accelerazione troppo bassa");}
 		}
+		get { return acceleration;}
 	}
 
-	[export] public float _engineBraking
+	[Export] public float _engineBraking
 	{
 		set
 		{
 			if(value >= 0 && value <= acceleration){ engineBraking = value;}
 			else { throw new ArgumentException("freno motore troppo alto o troppo basso");}
 		}
+		get { return engineBraking;}
 	}
 
-	[export] public float _rotationSpeed
+	[Export] public float _rotationSpeed
 	{
 		set
 		{
 			if(value > 0) {rotationSpeed = value;}
 			else { throw new ArgumentException("rotazione troppo bassa");}
 		}
+		get { return rotationSpeed;}	
 	}
 	
-	public Car() { }   // costruttore vuoto richiesto da Godot
+	public Car()
+	{
+		Label contachilometri = new Label();
+
+		contachilometri.Name = "Contachilometri";
+
+		AddChild(contachilometri);
+	}   // costruttore vuoto richiesto da Godot
 	
 	public void Initialize(float max_speed, float acc, float engine_braking, float rotation_speed)
 	{
@@ -55,6 +66,9 @@ public partial class Car : CharacterBody2D
 		_acceleration = acc;
 		_engineBraking = engine_braking;
 		_rotationSpeed = rotation_speed;
+		Label contachilometri = new Label();
+		contachilometri.Name = "Contachilometri";
+		AddChild(contachilometri);
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -71,9 +85,12 @@ public partial class Car : CharacterBody2D
 		Rotation += (float) (steerInput * rotationSpeed * speedFactor * delta);
 		Velocity = -Transform.Y * speed;
 		Position += Velocity * (float) delta;
-		contachilometri.Text = contachilometri.Text = $"{Velocity.Length() / 100} Km/h";
+		if(contachilometri != null) {	contachilometri.Text = contachilometri.Text = $"{Velocity.Length() / 100} Km/h";	}
+		else {	GD.Print(contachilometri);	}
 	}
 
-	public void creaContachilometri() { contachilometri = GetNode<Label>("../CanvasLayer/Contachilometri"); } 
+	public override void _Ready(){	contachilometri = GetNode<Label>("UI/Contachilometri");	}
+
+	public void creaContachilometri(Label posto) { contachilometri = posto; } 
 	public string stampa() { return "velocità massima: {maxSpedd} /n accelerazione: {acceleration} /n freno motore: {engineBraking} /n velocità rotazione: {rotationSpeed} /n"; }
 }
