@@ -10,6 +10,10 @@ script = ExtResource("1_0xm2m")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1047726371]
 script = ExtResource("2_1bvp3")
+_maxSpeed = 1000.0
+_acceleration = 260.0
+_engineBraking = 200.0
+_rotationSpeed = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=466268249]
 
