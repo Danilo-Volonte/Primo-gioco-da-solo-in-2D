@@ -28,9 +28,9 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="Mirino" type="Polygon2D" parent="Player" unique_id=1496686852]
-position = Vector2(-3.245695, 2.8235083)
-scale = Vector2(1.1124414, 1.4160233)
-polygon = PackedVector2Array(518.0009, 53.796078, 211.46793, 52.383667, 214.16472, 127.9474, 217.00003, 213.39796, 354.39682, 209.16075, 521.5966, 210.57317)
+position = Vector2(-1.8386002, -3.5791073)
+scale = Vector2(1.0656484, 0.33764738)
+polygon = PackedVector2Array(515.92865, -40.644695, 97.24489, -60.479942, 92.71853, 127.60621, 88.99615, 232.72537, 354.39682, 209.16075, 521.5966, 210.57317, 521.5966, 75.89461)
 script = ExtResource("4_lquwl")
 
 [node name="Marker2D" type="Marker2D" parent="Player/Mirino" unique_id=1966468437]
@@ -38,6 +38,6 @@ position = Vector2(290, 265)
 
 [node name="mappa" type="Sprite2D" parent="." unique_id=777409056]
 z_index = -2
-position = Vector2(2747, 634)
+position = Vector2(2689.0002, 668)
 scale = Vector2(4.5425, 2.889)
 texture = ExtResource("4_1bvp3")
