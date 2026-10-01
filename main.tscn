@@ -36,8 +36,18 @@ script = ExtResource("4_lquwl")
 [node name="Marker2D" type="Marker2D" parent="Player/Mirino" unique_id=1966468437]
 position = Vector2(290, 265)
 
+[node name="Area2D" type="Area2D" parent="Player/Mirino" unique_id=361292752]
+
 [node name="mappa" type="Sprite2D" parent="." unique_id=777409056]
 z_index = -2
 position = Vector2(2689.0002, 668)
 scale = Vector2(4.5425, 2.889)
 texture = ExtResource("4_1bvp3")
+
+[node name="Bersaglio" type="Sprite2D" parent="." unique_id=799650753]
+
+[node name="HurtBox" type="Area2D" parent="Bersaglio" unique_id=360933741]
+
+[node name="Oggetto" type="Sprite2D" parent="." unique_id=392782934]
+
+[node name="HurtBox" type="Area2D" parent="Oggetto" unique_id=1107151956]
