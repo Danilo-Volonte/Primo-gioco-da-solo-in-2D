@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dsdt1imblmcek"
+path="res://.godot/imported/shoot-c.ogg-10c5d1bb8aa6589c2890a77fb61cf4c3.oggvorbisstr"
+
+[deps]
+
+source_file="res://SUONI E IMMAGINI/ASSET/Sounds/shoot-c.ogg"
+dest_files=["res://.godot/imported/shoot-c.ogg-10c5d1bb8aa6589c2890a77fb61cf4c3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

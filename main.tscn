@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://br2av00wfspsl" path="res://Car.cs" id="2_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://dcpspqgqq5rnh" path="res://suoni e immagini/PISTA/track_map.svg" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://dogwi1c45u27a" path="res://Mirino.cs" id="4_lquwl"]
+[ext_resource type="Script" uid="uid://dwrp0wplrqt76" path="res://Bersaglio.cs" id="6_7mycd"]
 
 [node name="Main" type="Node2D" unique_id=2040235537]
 script = ExtResource("1_0xm2m")
@@ -45,8 +46,13 @@ scale = Vector2(4.5425, 2.889)
 texture = ExtResource("4_1bvp3")
 
 [node name="Bersaglio" type="Sprite2D" parent="." unique_id=799650753]
+script = ExtResource("6_7mycd")
 
 [node name="HurtBox" type="Area2D" parent="Bersaglio" unique_id=360933741]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Bersaglio" unique_id=1021628316]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Oggetto" type="Sprite2D" parent="." unique_id=392782934]
 

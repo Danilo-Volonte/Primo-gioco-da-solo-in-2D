@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcpspqgqq5rnh"
-path="res://.godot/imported/track_map.svg-f9a8e863e5675595f0889027445ccfeb.ctex"
+uid="uid://bejnuaa5qoanu"
+path="res://.godot/imported/track_map.svg-dd275dc94ee4eaebd24446e516d9c104.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://suoni e immagini/PISTA/track_map.svg"
-dest_files=["res://.godot/imported/track_map.svg-f9a8e863e5675595f0889027445ccfeb.ctex"]
+source_file="res://SUONI E IMMAGINI/PISTA/track_map.svg"
+dest_files=["res://.godot/imported/track_map.svg-dd275dc94ee4eaebd24446e516d9c104.ctex"]
 
 [params]
 

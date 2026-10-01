@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bucbet1gw8w4i"
+path="res://.godot/imported/jump-d.ogg-71de612aee51b4d9a4a226d461f3c982.oggvorbisstr"
+
+[deps]
+
+source_file="res://SUONI E IMMAGINI/ASSET/Sounds/jump-d.ogg"
+dest_files=["res://.godot/imported/jump-d.ogg-71de612aee51b4d9a4a226d461f3c982.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

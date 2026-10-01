@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c1nmy6sctuv25"
+path="res://.godot/imported/lose-d.ogg-7cdf5e2be3ae864250a89c3bbd4b1cc1.oggvorbisstr"
+
+[deps]
+
+source_file="res://SUONI E IMMAGINI/ASSET/Sounds/lose-d.ogg"
+dest_files=["res://.godot/imported/lose-d.ogg-7cdf5e2be3ae864250a89c3bbd4b1cc1.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

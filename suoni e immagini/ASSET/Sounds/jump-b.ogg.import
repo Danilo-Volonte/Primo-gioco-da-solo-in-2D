@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://hcl8tkjr8j2i"
+path="res://.godot/imported/jump-b.ogg-15a8204d7b704f9cd89e4ee7e28b52e0.oggvorbisstr"
+
+[deps]
+
+source_file="res://SUONI E IMMAGINI/ASSET/Sounds/jump-b.ogg"
+dest_files=["res://.godot/imported/jump-b.ogg-15a8204d7b704f9cd89e4ee7e28b52e0.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
