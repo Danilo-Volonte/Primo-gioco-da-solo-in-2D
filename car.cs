@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Globalization;   // riga per la virgola
 
 //per trovare tutte le classi
 [GlobalClass] 
@@ -85,7 +86,7 @@ public partial class Car : CharacterBody2D
 		Rotation += (float) (steerInput * rotationSpeed * speedFactor * delta);
 		Velocity = -Transform.Y * speed;
 		Position += Velocity * (float) delta;
-		if(contachilometri != null) {	contachilometri.Text = contachilometri.Text = $"{Velocity.Length() / 100} Km/h";	}
+		if(contachilometri != null) {	contachilometri.Text = $"{(Velocity.Length() / 100).ToString("F0", CultureInfo.InvariantCulture)} Km/h";	}
 		else {	GD.Print(contachilometri);	}
 	}
 
