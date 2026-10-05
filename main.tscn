@@ -3,9 +3,18 @@
 [ext_resource type="Script" uid="uid://c2tl8wk6sp6y6" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://twx4pmoaoucy" path="res://icon.svg" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://br2av00wfspsl" path="res://Car.cs" id="2_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://dcpspqgqq5rnh" path="res://suoni e immagini/PISTA/track_map.svg" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://bejnuaa5qoanu" path="res://SUONI E IMMAGINI/PISTA/track_map.svg" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://dogwi1c45u27a" path="res://Mirino.cs" id="4_lquwl"]
 [ext_resource type="Script" uid="uid://dwrp0wplrqt76" path="res://Bersaglio.cs" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://b44x63f2wsvgx" path="res://SUONI E IMMAGINI/HealthBar.png" id="7_272bh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2nlo"]
+atlas = ExtResource("7_272bh")
+region = Rect2(225.28271, 180.20374, 28.074158, 8.264465)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4cf0"]
+atlas = ExtResource("7_272bh")
+region = Rect2(65.085045, 179.32365, 28.676788, 9.869583)
 
 [node name="Main" type="Node2D" unique_id=2040235537]
 script = ExtResource("1_0xm2m")
@@ -41,7 +50,7 @@ position = Vector2(290, 265)
 
 [node name="mappa" type="Sprite2D" parent="." unique_id=777409056]
 z_index = -2
-position = Vector2(2689.0002, 668)
+position = Vector2(2885, 604)
 scale = Vector2(4.5425, 2.889)
 texture = ExtResource("4_1bvp3")
 
@@ -51,8 +60,13 @@ script = ExtResource("6_7mycd")
 [node name="HurtBox" type="Area2D" parent="Bersaglio" unique_id=360933741]
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Bersaglio" unique_id=1021628316]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -61.0
+offset_top = -95.0
+offset_right = 54.0
+offset_bottom = -67.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_m2nlo")
+texture_over = SubResource("AtlasTexture_y4cf0")
 
 [node name="Oggetto" type="Sprite2D" parent="." unique_id=392782934]
 
