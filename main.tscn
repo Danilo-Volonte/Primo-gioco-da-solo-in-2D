@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://typv5vi8unbb"]
 
 [ext_resource type="Script" uid="uid://c2tl8wk6sp6y6" path="res://main.gd" id="1_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://twx4pmoaoucy" path="res://icon.svg" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://br2av00wfspsl" path="res://Car.cs" id="2_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://cn0dggkj43im2" path="res://SUONI E IMMAGINI/PISTA/PNG/Cars/car_red_1.png" id="3_272bh"]
 [ext_resource type="Texture2D" uid="uid://bejnuaa5qoanu" path="res://SUONI E IMMAGINI/PISTA/track_map.svg" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://dogwi1c45u27a" path="res://Mirino.cs" id="4_lquwl"]
 [ext_resource type="Script" uid="uid://dwrp0wplrqt76" path="res://Bersaglio.cs" id="6_7mycd"]
@@ -15,6 +15,8 @@ region = Rect2(225.28271, 180.20374, 28.074158, 8.264465)
 [sub_resource type="AtlasTexture" id="AtlasTexture_y4cf0"]
 atlas = ExtResource("7_272bh")
 region = Rect2(65.085045, 179.32365, 28.676788, 9.869583)
+
+[sub_resource type="TileSet" id="TileSet_2t5ea"]
 
 [node name="Main" type="Node2D" unique_id=2040235537]
 script = ExtResource("1_0xm2m")
@@ -29,7 +31,7 @@ _rotationSpeed = 2.0
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=466268249]
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=414677190]
-texture = ExtResource("1_ig7tw")
+texture = ExtResource("3_272bh")
 
 [node name="UI" type="CanvasLayer" parent="Player" unique_id=13019061]
 
@@ -71,3 +73,6 @@ texture_over = SubResource("AtlasTexture_y4cf0")
 [node name="Oggetto" type="Sprite2D" parent="." unique_id=392782934]
 
 [node name="HurtBox" type="Area2D" parent="Oggetto" unique_id=1107151956]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=639869744]
+tile_set = SubResource("TileSet_2t5ea")
