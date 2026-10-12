@@ -16,11 +16,11 @@ public partial class Health : Node
 		}
 	}
 	
-	public Health(int vita_, int maxVita_) 
+	public Health(int vitaIniziale, int maxVita_) 
 	{
-		if(vita_ > 10 && vita_ < maxVita_)
+		if(vitaIniziale > 10 && vitaIniziale < maxVita_)
 		{
-			vita = vita_;
+			vita = vitaIniziale;
 			maxVita = maxVita_;
 		}
 	}

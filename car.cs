@@ -12,6 +12,13 @@ public partial class Car : CharacterBody2D
 	public float rotationSpeed;
 	public float speed = 0;
 	public Label contachilometri;
+	public Health vita;
+	public float AimSpeed = 3f;      // radianti al secondo: più basso = arma più pesante
+	public float Deadzone = 0.2f;
+
+	//veòocità mirino
+	[Export] public float mouseSensitivity = 0.003f;   // radianti per pixel di movimento
+	[Export] public float mtickSpeed = 3f;             // radianti al secondo con il pad
 	
 	[Export] public float _maxSpeed
 	{
@@ -61,12 +68,13 @@ public partial class Car : CharacterBody2D
 		AddChild(contachilometri);
 	}   // costruttore vuoto richiesto da Godot
 	
-	public void Initialize(float max_speed, float acc, float engine_braking, float rotation_speed)
+	public void Initialize(float max_speed, float acc, float engine_braking, float rotation_speed, int vita_iniziale, int max_vita)
 	{
 		_maxSpeed = max_speed;
 		_acceleration = acc;
 		_engineBraking = engine_braking;
 		_rotationSpeed = rotation_speed;
+		vita = new Health(vita_iniziale, max_vita);
 		Label contachilometri = new Label();
 		contachilometri.Name = "Contachilometri";
 		AddChild(contachilometri);
@@ -88,9 +96,18 @@ public partial class Car : CharacterBody2D
 		Position += Velocity * (float) delta;
 		if(contachilometri != null) {	contachilometri.Text = $"{(Velocity.Length() / 100).ToString("F0", CultureInfo.InvariantCulture)} Km/h";	}
 		else {	GD.Print(contachilometri);	}
+
+		Vector2 aim = Input.GetVector("aim_left", "aim_right", "aim_up", "aim_down", Deadzone);
+
+    	if (aim != Vector2.Zero)
+        	GlobalRotation = Mathf.RotateToward(GlobalRotation, aim.Angle(), AimSpeed * (float)delta);
 	}
 
-	public override void _Ready(){	contachilometri = GetNode<Label>("UI/Contachilometri");	}
+	public override void _Ready()
+	{	
+		contachilometri = GetNode<Label>("UI/Contachilometri");	
+		Input.MouseMode = Input.MouseModeEnum.Captured;   // cursore nascosto e bloccato
+	}
 
 	public void creaContachilometri(Label posto) { contachilometri = posto; } 
 	public string stampa() { return "velocità massima: {maxSpedd} /n accelerazione: {acceleration} /n freno motore: {engineBraking} /n velocità rotazione: {rotationSpeed} /n"; }
