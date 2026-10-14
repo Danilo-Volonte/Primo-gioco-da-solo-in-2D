@@ -96,17 +96,11 @@ public partial class Car : CharacterBody2D
 		Position += Velocity * (float) delta;
 		if(contachilometri != null) {	contachilometri.Text = $"{(Velocity.Length() / 100).ToString("F0", CultureInfo.InvariantCulture)} Km/h";	}
 		else {	GD.Print(contachilometri);	}
-
-		Vector2 aim = Input.GetVector("aim_left", "aim_right", "aim_up", "aim_down", Deadzone);
-
-    	if (aim != Vector2.Zero)
-        	GlobalRotation = Mathf.RotateToward(GlobalRotation, aim.Angle(), AimSpeed * (float)delta);
 	}
 
 	public override void _Ready()
 	{	
 		contachilometri = GetNode<Label>("UI/Contachilometri");	
-		Input.MouseMode = Input.MouseModeEnum.Captured;   // cursore nascosto e bloccato
 	}
 
 	public void creaContachilometri(Label posto) { contachilometri = posto; } 
